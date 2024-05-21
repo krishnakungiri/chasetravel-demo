@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
-
-interface IUser {
-  firstName: string
-  lastName: string
-  age: number
-}
-
+import { IUser, UsersData } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,14 +21,13 @@ export class UserService {
     )
   }
 
-  getUsers(): Observable<any> {
-    return this.http.get(`${this.baseURL}/users`)
+  getUsers(): Observable<UsersData> {
+    return this.http.get<UsersData>(`${this.baseURL}/users`);
   }
 
-  updateUser(id: number, userData: IUser): Observable<any> {
+  updateUser(id: number, userData: IUser): Observable<IUser> {
     return this.http.put(`${this.baseURL}/users/${id}`, userData).pipe(
       map((data: any) => {
-        console.log("return data updated :", data)
         return data
       }), catchError(error => {
         return throwError(() => error);
@@ -42,8 +35,7 @@ export class UserService {
     )
   }
 
-  deleteUser(id: number): Observable<any> {
-    return this.http.delete(`${this.baseURL}/users/${id}`)
+  deleteUser(id: number): Observable<IUser> {
+    return this.http.delete<IUser>(`${this.baseURL}/users/${id}`);
   }
-
 }

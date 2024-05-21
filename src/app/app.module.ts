@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { UsersListComponent } from './users-list/users-list.component';
-import { UpdateUserModalComponent } from './update-user-modal/update-user-modal.component';
+import { UpdateUserModalComponent } from './modals/update-user-modal/update-user-modal.component';
 import { DeleteConfirmationModalComponent } from './modals/delete-confirmation-modal/delete-confirmation-modal.component';
 
 @NgModule({
