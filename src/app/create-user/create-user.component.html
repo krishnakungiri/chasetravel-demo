@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="inner-container">
+    <form
+      class="form"
+      #createUserForm="ngForm"
+      (ngSubmit)="onSubmit(createUserForm)"
+    >
+      <div>
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname" ngModel />
+      </div>
+
+      <div>
+        <label for="lastname">Last Name</label>
+        <input type="text" name="lastname" ngModel />
+      </div>
+
+      <div>
+        <label for="age">Age</label>
+        <input type="number" name="age" ngModel />
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

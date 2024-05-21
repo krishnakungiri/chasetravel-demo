@@ -1,0 +1,45 @@
+<!-- src/app/user-table/user-table.component.html -->
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.id }}</td>
+        <td>
+          <button (click)="openUpdateUserModal(user)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button (click)="openDeleteModal(user)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-update-user-modal
+  #userModalTemplate
+  *ngIf="isModalOpen"
+  [user]="selectedUser"
+  (userUpdated)="handleUpdateUser($event)"
+  (closeModalEvent)="isModalOpen = false"
+>
+</app-update-user-modal>
+
+<app-delete-confirmation-modal
+  *ngIf="isDeleteModalOpen"
+  (confirmDeleteEvent)="handleDeleteUser()"
+  (closeModalEvent)="isDeleteModalOpen = false"
+></app-delete-confirmation-modal>
