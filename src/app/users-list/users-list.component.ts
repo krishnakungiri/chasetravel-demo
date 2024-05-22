@@ -33,7 +33,7 @@ export class UsersListComponent implements OnInit {
   }
 
   handleUpdateUser(updatedUser: IUser) {
-    const index = this.users.findIndex((user: IUser) => user.firstName === updatedUser.firstName && user.lastName === updatedUser.lastName);
+    const index = this.users.findIndex((user: IUser) => user.id === updatedUser.id);
     if (index > -1) {
       this.users[index] = updatedUser;
     }
