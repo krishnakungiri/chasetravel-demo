@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { IUser } from '../models/user.model';
+import { IUser, UsersData } from '../models/user.model';
 
 @Component({
   selector: 'app-users-list',
@@ -8,7 +8,7 @@ import { IUser } from '../models/user.model';
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent implements OnInit {
-  users: any[] = []
+  users: IUser[] = []
   selectedUser!: IUser;
   isModalOpen = false;
   isDeleteModalOpen = false
@@ -20,7 +20,7 @@ export class UsersListComponent implements OnInit {
   }
 
   getUsersList() {
-    return this.userService.getUsers().subscribe((data: any) => {
+    return this.userService.getUsers().subscribe((data: UsersData) => {
       this.users = data.users
     }, (error) => {
       alert("Failed getting users list")
@@ -32,15 +32,15 @@ export class UsersListComponent implements OnInit {
     this.isModalOpen = true
   }
 
-  handleUpdateUser(updatedUser: any) {
-    const index = this.users.findIndex((user: IUser) => user.firstName === updatedUser.firstname && user.lastName === updatedUser.lastname);
+  handleUpdateUser(updatedUser: IUser) {
+    const index = this.users.findIndex((user: IUser) => user.firstName === updatedUser.firstName && user.lastName === updatedUser.lastName);
     if (index > -1) {
       this.users[index] = updatedUser;
     }
     this.isModalOpen = false;
   }
 
-  openDeleteModal(user: any) {
+  openDeleteModal(user: IUser) {
     this.selectedUser = user;
     this.isDeleteModalOpen = true
   }
@@ -51,7 +51,7 @@ export class UsersListComponent implements OnInit {
       this.isDeleteModalOpen = false;
       setTimeout(() => {
         alert("User deleted Successfully");
-      }, 1000)
+      },)
     }, (error) => {
       alert("Failed deleting user");
       this.isDeleteModalOpen = false;
