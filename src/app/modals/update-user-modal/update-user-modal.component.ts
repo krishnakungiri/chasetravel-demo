@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { IUser } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-update-user-modal',
@@ -7,7 +8,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./update-user-modal.component.css']
 })
 export class UpdateUserModalComponent implements OnInit {
-  @Input() user: any;
+  @Input() user!: IUser;
   @Output() userUpdated = new EventEmitter<any>();
   @Output() closeModalEvent = new EventEmitter<any>();
 

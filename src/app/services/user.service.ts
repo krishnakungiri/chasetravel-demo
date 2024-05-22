@@ -7,28 +7,32 @@ import { IUser, UsersData } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
-  baseURL: string = 'https://dummyjson.com'
+  baseURL: string = 'https://dummyjson.com/users'
 
   constructor(private http: HttpClient) { }
 
-  createUser(userData: IUser): Observable<any> {
-    return this.http.post(`${this.baseURL}/users/add`, userData).pipe(
-      map((data: any) => {
-        return data
-      }), catchError(error => {
+  createUser(userData: IUser): Observable<void> {
+    return this.http.post<void>(`${this.baseURL}/add`, userData).pipe(
+      catchError(error => {
         return throwError(() => error);
       })
-    )
+    );
   }
 
   getUsers(): Observable<UsersData> {
-    return this.http.get<UsersData>(`${this.baseURL}/users`);
+    return this.http.get<UsersData>(`${this.baseURL}`).pipe(
+      map((data: UsersData) => {
+        return data;
+      }), catchError(error => {
+        return throwError(() => error);
+      })
+    );
   }
 
   updateUser(id: number, userData: IUser): Observable<IUser> {
-    return this.http.put(`${this.baseURL}/users/${id}`, userData).pipe(
-      map((data: any) => {
-        return data
+    return this.http.put<IUser>(`${this.baseURL}/${id}`, userData).pipe(
+      map((data: IUser) => {
+        return data;
       }), catchError(error => {
         return throwError(() => error);
       })
@@ -36,6 +40,12 @@ export class UserService {
   }
 
   deleteUser(id: number): Observable<IUser> {
-    return this.http.delete<IUser>(`${this.baseURL}/users/${id}`);
+    return this.http.delete<IUser>(`${this.baseURL}/${id}`).pipe(
+      map((data: IUser) => {
+        return data;
+      }), catchError(error => {
+        return throwError(() => error);
+      })
+    )
   }
 }

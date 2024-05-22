@@ -4,7 +4,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/create-user', pathMatch: 'full' },
+  { path: '', redirectTo: '/users-list', pathMatch: 'full' },
   { path: 'create-user', component: CreateUserComponent },
   { path: 'users-list', component: UsersListComponent }
 ];

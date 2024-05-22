@@ -1,23 +1,19 @@
 <div class="container">
   <div class="inner-container">
-    <form
-      class="form"
-      #createUserForm="ngForm"
-      (ngSubmit)="onSubmit(createUserForm)"
-    >
+    <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="firstname">First Name</label>
-        <input type="text" name="firstname" ngModel />
+        <input type="text" id="firstname" formControlName="firstName" />
       </div>
 
       <div>
         <label for="lastname">Last Name</label>
-        <input type="text" name="lastname" ngModel />
+        <input type="text" id="lastname" formControlName="lastName" />
       </div>
 
       <div>
         <label for="age">Age</label>
-        <input type="number" name="age" ngModel />
+        <input type="number" id="age" formControlName="age" />
       </div>
 
       <div>

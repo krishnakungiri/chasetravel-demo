@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -7,24 +9,27 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
+  createUserForm: FormGroup;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) {
+    this.createUserForm = new FormGroup({
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      age: new FormControl('', Validators.required)
+    })
+  }
 
   ngOnInit(): void {
   }
 
-  onSubmit(createUserForm: any) {
-    console.log(createUserForm.value);
-
-    this.userService.createUser(createUserForm.value).subscribe((data) => {
-      console.log("User added successfully ", data);
-      alert("User added successfully")
-    }, (err) => {
-      console.log("Failed adding user ", err);
-      alert("Failed adding user")
-    })
+  onSubmit() {
+    if (this.createUserForm.valid) {
+      this.userService.createUser(this.createUserForm.value).subscribe((data) => {
+        alert("User added successfully")
+        this.router.navigate(['/users-list']);
+      }, (err) => {
+        alert("Failed adding user")
+      })
+    }
   }
-
-
-
 }
