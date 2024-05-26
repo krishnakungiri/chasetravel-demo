@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { DeleteConfirmationModalComponent } from './modals/delete-confirmation-modal/delete-confirmation-modal.component';
 import { UpdateUserModalComponent } from './modals/update-user-modal/update-user-modal.component';
+import { UserDetailsComponent } from './users-list/user-details/user-details.component';
+import { DirectiveExComponent } from './directive-ex/directive-ex.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { UpdateUserModalComponent } from './modals/update-user-modal/update-user
     UpdateUserModalComponent,
     DeleteConfirmationModalComponent,
     CreateUserComponent,
+    UserDetailsComponent,
+    DirectiveExComponent
   ],
   imports: [
     BrowserModule,

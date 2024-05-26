@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, map, throwError } from 'rxjs';
 import { IUser, UsersData } from '../models/user.model';
 
 @Injectable({
@@ -8,6 +8,10 @@ import { IUser, UsersData } from '../models/user.model';
 })
 export class UserService {
   baseURL: string = 'https://dummyjson.com/users'
+
+  public notificationSubject: Subject<string> = new Subject<string>();
+
+  public notificationBehaviorSubject: BehaviorSubject<string> = new BehaviorSubject<string>("Intital B.subject value");
 
   constructor(private http: HttpClient) { }
 
@@ -47,5 +51,13 @@ export class UserService {
         return throwError(() => error);
       })
     )
+  }
+
+  sendNotification(number: number) {
+    //subject
+    this.notificationSubject.next(`Subject Value :${number}`);
+
+    //behavior subject
+    this.notificationBehaviorSubject.next(`Behavior subject value : ${number}`)
   }
 }

@@ -1,0 +1,13 @@
+<ng-content></ng-content>
+<div class="user-details" *ngIf="user">
+  <h3>User Details</h3>
+  <p><strong>First Name:</strong> {{ user.firstName }}</p>
+  <p><strong>Last Name:</strong> {{ user.lastName }}</p>
+  <p><strong>Age:</strong> {{ user.age }}</p>
+  <p><strong>ID:</strong> {{ user.id }}</p>
+</div>
+<div *ngIf="!user">
+  <p>Select a user to view details.</p>
+</div>
+<div>{{ subjectValue }}</div>
+<div>{{ behaviorSubjectValue }}</div>

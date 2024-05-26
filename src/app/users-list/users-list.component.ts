@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { IUser, UsersData } from '../models/user.model';
 
@@ -12,6 +12,7 @@ export class UsersListComponent implements OnInit {
   selectedUser!: IUser;
   isModalOpen = false;
   isDeleteModalOpen = false
+  color: string = "red"
 
   constructor(private userService: UserService,) { }
 
@@ -57,4 +58,10 @@ export class UsersListComponent implements OnInit {
       this.isDeleteModalOpen = false;
     })
   }
+
+  viewUserDetails(user: IUser) {
+    this.selectedUser = user;
+    this.userService.sendNotification(user.id);
+  }
+
 }

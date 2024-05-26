@@ -4,9 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreateUserComponent } from './create-user.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from '../guards/auth.guard';
+import { DeactivateExGuard } from '../guards/deactivate-ex.guard';
 
 const routes: Routes = [
-  { path: '', component: CreateUserComponent }
+  { path: '', component: CreateUserComponent, canActivate: [AuthGuard], canDeactivate: [DeactivateExGuard] }
 ]
 
 

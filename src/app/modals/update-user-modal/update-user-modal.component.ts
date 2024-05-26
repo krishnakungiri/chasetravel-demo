@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { IUser } from 'src/app/models/user.model';
 
@@ -7,12 +7,16 @@ import { IUser } from 'src/app/models/user.model';
   templateUrl: './update-user-modal.component.html',
   styleUrls: ['./update-user-modal.component.css']
 })
-export class UpdateUserModalComponent implements OnInit {
+export class UpdateUserModalComponent implements OnInit, OnChanges {
   @Input() user!: IUser;
   @Output() userUpdated = new EventEmitter<any>();
   @Output() closeModalEvent = new EventEmitter<any>();
 
   constructor(private userService: UserService) { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("chnages :", changes);
+  }
 
   ngOnInit(): void {
   }
