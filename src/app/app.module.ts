@@ -13,6 +13,8 @@ import { DeleteConfirmationModalComponent } from './modals/delete-confirmation-m
 import { UpdateUserModalComponent } from './modals/update-user-modal/update-user-modal.component';
 import { UserDetailsComponent } from './users-list/user-details/user-details.component';
 import { DirectiveExComponent } from './directive-ex/directive-ex.component';
+import { CustomPipe1Pipe } from './pipes/custom-pipe-1.pipe';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { DirectiveExComponent } from './directive-ex/directive-ex.component';
     DeleteConfirmationModalComponent,
     CreateUserComponent,
     UserDetailsComponent,
-    DirectiveExComponent
+    DirectiveExComponent,
+    CustomPipe1Pipe,
+    FormsComponent,
   ],
   imports: [
     BrowserModule,
