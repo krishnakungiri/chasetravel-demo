@@ -15,6 +15,7 @@ import { UserDetailsComponent } from './users-list/user-details/user-details.com
 import { DirectiveExComponent } from './directive-ex/directive-ex.component';
 import { CustomPipe1Pipe } from './pipes/custom-pipe-1.pipe';
 import { FormsComponent } from './forms/forms.component';
+import { NgContainerExComponent } from './components/ng-container-ex/ng-container-ex.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FormsComponent } from './forms/forms.component';
     DirectiveExComponent,
     CustomPipe1Pipe,
     FormsComponent,
+    NgContainerExComponent,
   ],
   imports: [
     BrowserModule,

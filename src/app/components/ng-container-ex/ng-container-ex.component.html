@@ -1,0 +1,9 @@
+<ng-container *ngIf="isAuthenticated; else noAuthTemplate">
+  <p>Welcome, {{ user.name }}</p>
+  <button (click)="logout()">Logout</button>
+</ng-container>
+
+<ng-template #noAuthTemplate>
+  <p>Login to authenticate</p>
+  <button (click)="login()">Login</button>
+</ng-template>
